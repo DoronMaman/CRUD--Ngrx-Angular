@@ -1,0 +1,42 @@
+
+
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | async">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.age}}</td>
+      <td>
+        <fa-icon (click)="deleteUser(user.name)" [icon]="faTrash"></fa-icon>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+  <form [formGroup]="userForm" class="container" (ngSubmit)="onFormSubmit()">
+  <div class="brand-title">Add User</div>
+  <div class="inputs">
+    <label>NAME</label>
+    <input  formControlName="name"  placeholder="Enter Name">
+      <label>EMAIL</label>
+      <input  formControlName="email"  placeholder="Enter Email">
+      <label>AGE</label>
+      <input  class="form-control" formControlName="age"  placeholder="Enter Age">
+    <button type="submit">ADD USER</button>
+    <button (click)="showAll()">SHOW ALL USERS</button>
+
+  </div>
+</form>
